@@ -178,7 +178,7 @@ int ret = 0;
 					printf ("[%d] i = %d, j = %d, l = %d, k = %d, b->slen = %d\n", __LINE__, i, j, l, k, b->slen);
 					ret++;
 				} else if (0 != memcmp (t, b->data, l-k+1)) {
-					printf ("[%d] \"%s\" != \"%s\"\n", b->data, t);
+					printf ("[%d] \"%s\" != \"%s\"\n", __LINE__, b->data, t);
 					ret++;
 				}
 				bdestroy (b);
@@ -632,7 +632,7 @@ static int test47_0 (const struct tagbstring* b, const unsigned char* blk, int l
 int rv, ret = 0;
 
 	ret += (res != (rv = biseqblk (b, blk, len)));
-	printf (".\tbiseqblk (%s, %s) = %d\n", dumpBstring (b), dumpCstring (blk), rv);
+	printf (".\tbiseqblk (%s, %s) = %d\n", dumpBstring (b), dumpCstring ((const char*)blk), rv);
 	if (ret) {
 		printf ("\t\tfailure(%d) = %d (res = %d)\n", __LINE__, ret, res);
 	}
@@ -3037,7 +3037,7 @@ static int test48_0 (const_bstring b, const unsigned char * blk, int len, int re
 int rv, ret = 0;
 
 	ret += (res != (rv = biseqcaselessblk (b, blk, len)));
-	printf (".\tbiseqcaselessblk (%s, %s, %d) = %d\n", dumpBstring (b), dumpCstring (blk), len, rv);
+	printf (".\tbiseqcaselessblk (%s, %s, %d) = %d\n", dumpBstring (b), dumpCstring ((const char*)blk), len, rv);
 	if (ret) {
 		printf ("\t\tfailure(%d) = %d (res = %d)\n", __LINE__, ret, res);
 	}
